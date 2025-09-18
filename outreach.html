@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outreach | Odedina Adeniyi</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="include.js"></script>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <div data-include="header.html"></div>
+
+    <main>
+        <!-- Outreach Section -->
+        <section id="outreach" class="py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Donations & Outreach</h2>
+                    <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
+                </div>
+                <div class="md:flex items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                        <h3 class="text-2xl font-semibold mb-4">Outreach</h3>
+                        <p class="text-gray-600 mb-6">Odedina Adeniyi's deep passion for accessible optimal healthcare
+                            has
+                            led him to engage in different outreaches across Africa. The health of humanity is our
+                            collective responsibility.</p>
+                        <a href="#"
+                            class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block">Get
+                            Involved</a>
+                    </div>
+                    <div class="md:w-1/2 md:pl-16" data-aos="fade-left">
+                        <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/Nurse%20week%201.jpg"
+                            alt="Community Outreach" class="rounded-lg shadow-lg w-full">
+                    </div>
+                </div>
+
+                <div class="mt-16 grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md service-card" data-aos="fade-up">
+                        <i data-feather="heart" class="text-[#1C80A4] h-10 w-10 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Medical Camps</h3>
+                        <p class="text-gray-600">Organizing free medical camps in underserved communities across Africa.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md service-card" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <i data-feather="book-open" class="text-[#1C80A4] h-10 w-10 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Health Education</h3>
+                        <p class="text-gray-600">Conducting health awareness programs and workshops in local
+                            communities.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md service-card" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <i data-feather="users" class="text-[#1C80A4] h-10 w-10 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Community Support</h3>
+                        <p class="text-gray-600">Building sustainable healthcare support systems in rural areas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="footer.html"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-quad',
+                once: true
+            });
+
+            // Feather icons
+            feather.replace();
+        });
+    </script>
+</body>
+
+</html>
