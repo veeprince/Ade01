@@ -12,15 +12,23 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <a href="about.html" class="text-teal-600 font-medium hover:text-teal-800 transition">About</a>
-                        <a href="awards.html" class="text-gray-600 hover:text-teal-600 transition">Awards</a>
-                        <a href="books.html" class="text-gray-600 hover:text-teal-600 transition">Books</a>
-                        <a href="events.html" class="text-gray-600 hover:text-teal-600 transition">Events</a>
-                        <a href="outreach.html" class="text-gray-600 hover:text-teal-600 transition">Outreach</a>
-                        <a href="volunteer.html" class="text-gray-600 hover:text-teal-600 transition">Volunteer</a>
-                        <a href="contact.html" class="text-gray-600 hover:text-teal-600 transition">Contact</a>
+                        <a href="about.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="about-link">About</a>
+                        <a href="awards.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="awards-link">Awards</a>
+                        <a href="books.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="books-link">Books</a>
+                        <a href="events.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="events-link">Events</a>
+                        <a href="outreach.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="outreach-link">Outreach</a>
+                        <a href="volunteer.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="volunteer-link">Volunteer</a>
+                        <a href="contact.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="contact-link">Contact</a>
                         <a href="consultation.html"
-                            class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition">Consult</a>
+                            class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
+                            id="consultation-link">Consult</a>
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
@@ -36,15 +44,23 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
             <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="about.html" class="block text-teal-600 font-medium hover:text-teal-800 transition">About</a>
-                <a href="awards.html" class="block text-gray-600 hover:text-teal-600 transition">Awards</a>
-                <a href="books.html" class="block text-gray-600 hover:text-teal-600 transition">Books</a>
-                <a href="events.html" class="block text-gray-600 hover:text-teal-600 transition">Events</a>
-                <a href="outreach.html" class="block text-gray-600 hover:text-teal-600 transition">Outreach</a>
-                <a href="volunteer.html" class="block text-gray-600 hover:text-teal-600 transition">Volunteer</a>
-                <a href="contact.html" class="block text-gray-600 hover:text-teal-600 transition">Contact</a>
+                <a href="about.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="about-link-mobile">About</a>
+                <a href="awards.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="awards-link-mobile">Awards</a>
+                <a href="books.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="books-link-mobile">Books</a>
+                <a href="events.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="events-link-mobile">Events</a>
+                <a href="outreach.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="outreach-link-mobile">Outreach</a>
+                <a href="volunteer.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="volunteer-link-mobile">Volunteer</a>
+                <a href="contact.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="contact-link-mobile">Contact</a>
                 <a href="consultation.html"
-                    class="block bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition">Consult</a>
+                    class="block bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
+                    id="consultation-link-mobile">Consult</a>
             </div>
         </div>
     </nav>
@@ -59,6 +75,25 @@
                 mobileMenu.classList.toggle('hidden');
             });
         }
+
+        // Set active navigation link
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const pageName = currentPage.replace('.html', '');
+
+        // Update desktop menu
+        const activeLink = document.getElementById(pageName + '-link');
+        if (activeLink) {
+            activeLink.classList.remove('text-gray-600');
+            activeLink.classList.add('text-teal-600', 'font-medium');
+        }
+
+        // Update mobile menu
+        const activeMobileLink = document.getElementById(pageName + '-link-mobile');
+        if (activeMobileLink) {
+            activeMobileLink.classList.remove('text-gray-600');
+            activeMobileLink.classList.add('text-teal-600', 'font-medium');
+        }
+
         // Feather icons
         if (window.feather) {
             feather.replace();
