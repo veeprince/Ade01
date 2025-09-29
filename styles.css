@@ -1,0 +1,82 @@
+.hero-gradient {
+    background: linear-gradient(135deg, rgba(28,128,164,0.9) 0%, rgba(24,144,180,0.9) 100%);
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
+}
+.hovered-element {
+    filter: drop-shadow(0 0 8px #1C80A4);
+}
+::selection {
+    background: #1C80A4;
+    color: white;
+}
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+body {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+body.fade-out {
+    opacity: 0;
+}
+main {
+    flex: 1 0 auto;
+    min-height: 0;
+}
+footer {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+[data-aos] {
+    transition-property: transform, opacity;
+}
+.service-card, .blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+a {
+    transition: color 0.2s ease;
+}
+button, .btn {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+button:hover, .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Site Title Styles */
+.flex-shrink-0 a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.flex-shrink-0 a:hover span {
+    color: #1C80A4;
+}
+
+/* Hero Section Styles */
+.hero-gradient {
+    background: linear-gradient(135deg, rgba(28, 128, 164, 0.9) 0%, rgba(24, 144, 180, 0.9) 100%);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
+}
+
+.hovered-element {
+    filter: drop-shadow(0 0 8px #1C80A4);
+}
+
+::selection {
+    background: #1C80A4;
+    color: white;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odedina Adeniyi | Holistic Healthcare Practitioner</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <div data-include="header.html"></div>
+
+    <main class="hero-gradient flex-1">
+        <!-- Hero Section -->
+        <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="md:flex items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Odedina Adeniyi</h1>
+                        <p class="text-xl mb-8 opacity-90">UKRN - ICU /Leadership/ Education<br>Founder of Innovateur
+                            Africa
+                            Consult<br>Author: Clarity and Productivity workbook</p>
+                        <div class="flex space-x-4">
+                            <a href="consultation.html"
+                                class="bg-white text-teal-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition">Consult</a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                        <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/3D192C1B-5A7F-4481-B2A8-E5B892700239.JPEG"
+                            alt="Odedina Adeniyi" class="rounded-lg shadow-xl max-w-md w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="footer.html"></div>
+
+    <script src="include.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-quad',
+                once: true
+            });
+
+            // Feather icons
+            feather.replace();
+
+            // Preload hover images
+            document.querySelectorAll('img').forEach(img => {
+                if (img.dataset.hoverSrc) {
+                    const hoverImage = new Image();
+                    hoverImage.src = img.dataset.hoverSrc;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

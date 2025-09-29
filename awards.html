@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards & Recognition | Odedina Adeniyi</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <div data-include="header.html"></div>
+
+    <main class="pt-24 pb-16">
+        <!-- Awards Section -->
+        <section id="awards" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Awards & Recognition</h2>
+                    <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-1 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center" data-aos="fade-up">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-award text-[#1C80A4] h-12 w-12 mx-auto mb-4 hovered-element">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Outstanding Excellence</h3>
+                        <p class="text-gray-600">2018 Eminence Educational Club/College of Nursing Lantoro</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center" data-aos="fade-up">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-award text-[#1C80A4] h-12 w-12 mx-auto mb-4 hovered-element">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Merit Award</h3>
+                        <p class="text-gray-600">2018 Eminence Educational Club/College of Nursing Lantoro</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="footer.html"></div>
+
+    <script src="include.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out-quad',
+            once: true
+        });
+
+        // Preload hover images
+        document.querySelectorAll('img').forEach(img => {
+            if (img.dataset.hoverSrc) {
+                const hoverImage = new Image();
+                hoverImage.src = img.dataset.hoverSrc;
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+<!--
+    Awards Page - Recognition
+    Key features:
+    - Professional achievements
+    - Industry recognition
+-->

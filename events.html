@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Odedina Adeniyi</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <div data-include="header.html"></div>
+
+    <main class="flex-1 bg-gray-50">
+        <!-- Events Section -->
+        <section id="events" class="py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+                    <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                        <div class="bg-[#1C80A4] text-white text-center py-2 px-4 rounded-t-lg -mt-6 mb-4">
+                            <span class="font-medium">2026</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Leadership in Nursing Workshop</h3>
+                        <p class="text-gray-600 mb-4">A one-day intensive workshop for nursing professionals.</p>
+                        <a href="#" class="text-[#1C80A4] font-medium hover:underline">Learn more</a>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-[#1C80A4] text-white text-center py-2 px-4 rounded-t-lg -mt-6 mb-4">
+                            <span class="font-medium">2026</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Productivity Masterclass</h3>
+                        <p class="text-gray-600 mb-4">Strategies for maximizing your daily productivity.</p>
+                        <a href="#" class="text-[#1C80A4] font-medium hover:underline">Learn more</a>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-[#1C80A4] text-white text-center py-2 px-4 rounded-t-lg -mt-6 mb-4">
+                            <span class="font-medium">2026</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Mental Health Awareness Seminar</h3>
+                        <p class="text-gray-600 mb-4">Understanding mental health challenges in healthcare.</p>
+                        <a href="#" class="text-[#1C80A4] font-medium hover:underline">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="footer.html"></div>
+
+    <script src="include.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-quad',
+                once: true
+            });
+
+            // Feather icons
+            feather.replace();
+        });
+    </script>
+</body>
+
+</html>
+
+<!--
+    Events Page - Activities
+    Key features:
+    - Upcoming events calendar
+    - Past events showcase
+-->

@@ -1,0 +1,102 @@
+<div class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center hover:text-[#1C80A4] transition-colors duration-200">
+                        <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/2.png"
+                            class="h-8 w-8 rounded-full">
+                        <span class="ml-2 text-xl font-bold text-gray-800">Odedina Adeniyi</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="about.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="about-link">About</a>
+                        <a href="awards.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="awards-link">Awards</a>
+                        <a href="books.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="books-link">Books</a>
+                        <a href="events.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="events-link">Events</a>
+                        <a href="outreach.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="outreach-link">Outreach</a>
+                        <a href="volunteer.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="volunteer-link">Volunteer</a>
+                        <a href="contact.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="contact-link">Contact</a>
+                        <a href="consultation.html"
+                            class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
+                            id="consultation-link">Consult</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="about.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="about-link-mobile">About</a>
+                <a href="awards.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="awards-link-mobile">Awards</a>
+                <a href="books.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="books-link-mobile">Books</a>
+                <a href="events.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="events-link-mobile">Events</a>
+                <a href="outreach.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="outreach-link-mobile">Outreach</a>
+                <a href="volunteer.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="volunteer-link-mobile">Volunteer</a>
+                <a href="contact.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="contact-link-mobile">Contact</a>
+                <a href="consultation.html"
+                    class="block bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
+                    id="consultation-link-mobile">Consult</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Hamburger menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Set active navigation link
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const pageName = currentPage.replace('.html', '');
+
+        // Update desktop menu
+        const activeLink = document.getElementById(pageName + '-link');
+        if (activeLink) {
+            activeLink.classList.remove('text-gray-600');
+            activeLink.classList.add('text-teal-600', 'font-medium');
+        }
+
+        // Update mobile menu
+        const activeMobileLink = document.getElementById(pageName + '-link-mobile');
+        if (activeMobileLink) {
+            activeMobileLink.classList.remove('text-gray-600');
+            activeMobileLink.classList.add('text-teal-600', 'font-medium');
+        }
+
+        // Feather icons
+        if (window.feather) {
+            feather.replace();
+        }
+    });
+</script>

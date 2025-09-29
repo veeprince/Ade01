@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Odedina Adeniyi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="text-center p-8 max-w-lg">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">Thank You!</h1>
+                <p class="text-gray-600 mb-8" id="thankYouMessage">Your message has been sent successfully.</p>
+                <a href="index.html" 
+                   class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block">
+                    Return to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Customize message based on form type
+        document.addEventListener('DOMContentLoaded', function() {
+            const formType = new URLSearchParams(window.location.search).get('type');
+            const messageElement = document.getElementById('thankYouMessage');
+            
+            const messages = {
+                'consultation': 'Your consultation request has been sent. I will get back to you shortly.',
+                'contact': 'Thank you for reaching out. I will respond to your message soon.',
+                'volunteer': 'Thank you for your interest in volunteering. I will contact you with more details.',
+                'newsletter': 'Thank you for subscribing to my newsletter!',
+                'default': 'Your message has been sent successfully.'
+            };
+            
+            messageElement.textContent = messages[formType] || messages.default;
+        });
+    </script>
+</body>
+</html>

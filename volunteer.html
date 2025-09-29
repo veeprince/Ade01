@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer | Odedina Adeniyi</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <div data-include="header.html"></div>
+
+    <!-- Volunteer Section -->
+    <section id="volunteer" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Volunteer</h2>
+                <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-3xl mx-auto" data-aos="fade-up">
+                <h3 class="text-xl font-semibold mb-6">Volunteer Experience</h3>
+                <p class="text-gray-600 mb-8">Odedina is passionate about the delivery of optimal healthcare in areas of
+                    scarce resources. Here are some of the volunteer initiatives he has participated in:</p>
+
+                <div class="space-y-8">
+                    <div class="border-l-4 border-[#1C80A4] pl-4">
+                        <h4 class="text-lg font-semibold mb-2">Healthcare Outreach Programs</h4>
+                        <p class="text-gray-600">Leading medical camps and health awareness sessions in underserved
+                            communities.</p>
+                    </div>
+
+                    <div class="border-l-4 border-[#1C80A4] pl-4">
+                        <h4 class="text-lg font-semibold mb-2">Medical Education Initiatives</h4>
+                        <p class="text-gray-600">Training local healthcare workers and community health volunteers.</p>
+                    </div>
+
+                    <div class="border-l-4 border-[#1C80A4] pl-4">
+                        <h4 class="text-lg font-semibold mb-2">Community Health Projects</h4>
+                        <p class="text-gray-600">Developing sustainable healthcare solutions for rural communities.</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <form action="mailto:info@odedinaadeniyi.com"
+                          method="POST"
+                          enctype="text/plain"
+                          onsubmit="setTimeout(function(){ window.location = 'thank-you.html?type=volunteer'; }, 1000);">
+                        <h4 class="text-lg font-semibold mb-4">Want to Get Involved?</h4>
+                        <p class="text-gray-600 mb-6">Join our mission to improve healthcare accessibility in underserved areas. We welcome volunteers with various skills and backgrounds.</p>
+                        <input type="hidden" name="Subject" value="Volunteer Interest">
+                        <input type="hidden" name="Message" value="I would like to volunteer with your healthcare initiatives.">
+                        <button type="submit" 
+                            class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition">
+                            Get Involved
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="footer.html"></div>
+
+    <script src="include.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-quad',
+                once: true
+            });
+
+            // Feather icons
+            feather.replace();
+        });
+    </script>
+</body>
+
+</html>
+
+<!--
+    Volunteer Page - Engagement
+    Key features:
+    - Volunteer opportunities
+    - Community involvement
+-->
