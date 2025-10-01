@@ -31,32 +31,35 @@
                             id="consultation-link">Consult</a>
                     </div>
                 </div>
+                <!-- Mobile menu button -->
                 <div class="-mr-2 flex md:hidden">
                     <button id="mobile-menu-button" type="button"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
                         aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <i data-feather="menu"></i>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="about.html" class="block text-gray-600 hover:text-teal-600 transition"
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="about-link-mobile">About</a>
-                <a href="awards.html" class="block text-gray-600 hover:text-teal-600 transition"
+                <a href="awards.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="awards-link-mobile">Awards</a>
-                <a href="books.html" class="block text-gray-600 hover:text-teal-600 transition"
+                <a href="books.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="books-link-mobile">Books</a>
-                <a href="events.html" class="block text-gray-600 hover:text-teal-600 transition"
+                <a href="events.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="events-link-mobile">Events</a>
-                <a href="outreach.html" class="block text-gray-600 hover:text-teal-600 transition"
+                <a href="outreach.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="outreach-link-mobile">Outreach</a>
-                <a href="volunteer.html" class="block text-gray-600 hover:text-teal-600 transition"
+                <a href="volunteer.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="volunteer-link-mobile">Volunteer</a>
-                <a href="contact.html" class="block text-gray-600 hover:text-teal-600 transition"
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="contact-link-mobile">Contact</a>
                 <a href="consultation.html"
                     class="block bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
@@ -72,7 +75,23 @@
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
             });
         }
 

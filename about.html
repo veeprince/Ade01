@@ -75,33 +75,21 @@
         </section>
     </main>
     <div data-include="footer.html"></div>
+
     <script src="include.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 600,
-            easing: 'ease-out-quad',
-            once: true
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-quad',
+                once: true
+            });
 
-        // Preload hover images
-        document.querySelectorAll('img').forEach(img => {
-            if (img.dataset.hoverSrc) {
-                const hoverImage = new Image();
-                hoverImage.src = img.dataset.hoverSrc;
-            }
+            // Feather icons
+            feather.replace();
         });
-
-        // Initialize Feather icons after all components are loaded
-        feather.replace();
     </script>
 </body>
 
 </html>
-
-<!--
-    About Page - Primary Information
-    Key features:
-    - Professional background and expertise
-    - Core values and mission statement
--->
