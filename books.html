@@ -27,34 +27,39 @@
                     <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
                     <p class="text-[#1C80A4] mt-4 max-w-2xl mx-auto font-medium">Productivity hub</p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Text Card -->
-                    <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 flex items-center"
-                        data-aos="fade-up" data-aos-delay="100">
+                <div class="books-grid">
+                    <!-- Book Description Tab -->
+                    <div class="book-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="text-center w-full">
                             <h3 class="text-xl font-semibold mb-3">Clarity and Productivity Workbook</h3>
                             <p class="text-gray-600 mb-6">A practical guide to achieving clarity and maximizing
-                                productivity
-                                in your personal and professional life.</p>
-                            <a href="https://amzn.eu/d/cut06hG"
-                                class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block"
-                                target="_blank" rel="noopener">Learn More</a>
+                                productivity in your personal and professional life.</p>
                         </div>
                     </div>
 
-                    <!-- Image Card -->
-                    <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
-                        data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex justify-center">
-                            <img src="clarity.jpeg"
-                                alt="Clarity Book"
-                                class="h-96 w-auto object-contain"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <div style="display:none;" class="text-center text-gray-500 p-8">
-                                <p>Image not available</p>
+                    <!-- Book Image Tab -->
+                    <div class="book-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex justify-center w-full">
+                            <img src="./clarity.jpeg"
+                                alt="Clarity and Productivity Workbook"
+                                class="book-image"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="book-image-fallback" style="display:none;">
+                                <div class="text-center">
+                                    <p class="text-lg font-medium">Book Cover</p>
+                                    <p class="text-sm">Image not available</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Get Book Button Section -->
+                <div class="books-section-bottom" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://amzn.eu/d/cut06hG"
+                        class="get-book-btn"
+                        target="_blank" rel="noopener">Get Book</a>
                 </div>
             </div>
         </section>
@@ -65,7 +70,7 @@
     <script src="include.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize AOS with error handling
+            // Initialize AOS
             if (typeof AOS !== 'undefined') {
                 AOS.init({
                     duration: 600,
@@ -74,15 +79,16 @@
                 });
             }
 
-            // Feather icons with error handling
+            // Feather icons
             if (typeof feather !== 'undefined') {
                 feather.replace();
             }
 
-            // Fix button click issues
+            // Ensure all links and buttons are clickable
             document.querySelectorAll('a, button').forEach(element => {
                 element.style.pointerEvents = 'auto';
                 element.style.cursor = 'pointer';
+                element.style.userSelect = 'none';
             });
         });
     </script>
