@@ -70,27 +70,19 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Hamburger menu toggle with debugging
+        // Simple hamburger menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        console.log('Mobile menu button:', mobileMenuButton);
-        console.log('Mobile menu:', mobileMenu);
-        
         if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function (e) {
-                console.log('Mobile menu button clicked');
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Toggle the hidden class
-                mobileMenu.classList.toggle('hidden');
-                
-                // Update aria-expanded attribute
-                const isExpanded = !mobileMenu.classList.contains('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', isExpanded.toString());
-                
-                console.log('Menu is now:', isExpanded ? 'visible' : 'hidden');
+            mobileMenuButton.addEventListener('click', function () {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
             });
 
             // Close menu when clicking on mobile menu links
@@ -109,8 +101,6 @@
                     mobileMenuButton.setAttribute('aria-expanded', 'false');
                 }
             });
-        } else {
-            console.error('Mobile menu elements not found');
         }
 
         // Set active navigation link
