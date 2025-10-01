@@ -27,27 +27,15 @@
                     <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
                     <p class="text-[#1C80A4] mt-4 max-w-2xl mx-auto font-medium">Productivity hub</p>
                 </div>
-<<<<<<< HEAD
                 <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <!-- Text Card -->
                     <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 flex items-center"
                         data-aos="fade-up" data-aos-delay="100">
                         <div class="text-center w-full">
-=======
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex justify-center mb-4">
-                            <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/1.png"
-                                alt="Book" class="h-64 w-auto">
-                        </div>
-                        <div class="text-center">
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26
                             <h3 class="text-xl font-semibold mb-3">Clarity and Productivity Workbook</h3>
                             <p class="text-gray-600 mb-6">A practical guide to achieving clarity and maximizing
                                 productivity
                                 in your personal and professional life.</p>
-<<<<<<< HEAD
                             <a href="https://amzn.eu/d/cut06hG"
                                 class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block"
                                 target="_blank" rel="noopener">Learn More</a>
@@ -60,12 +48,11 @@
                         <div class="flex justify-center">
                             <img src="clarity.jpeg"
                                 alt="Clarity Book"
-                                class="h-96 w-auto object-contain"> <!-- Increased height to h-96 -->
-=======
-                            <a href="#"
-                                class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block">Learn
-                                More</a>
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26
+                                class="h-96 w-auto object-contain"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display:none;" class="text-center text-gray-500 p-8">
+                                <p>Image not available</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,20 +65,29 @@
     <script src="include.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize AOS
-            AOS.init({
-                duration: 600,
-                easing: 'ease-out-quad',
-                once: true
-            });
+            // Initialize AOS with error handling
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 600,
+                    easing: 'ease-out-quad',
+                    once: true
+                });
+            }
 
-            // Feather icons
-            feather.replace();
+            // Feather icons with error handling
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+
+            // Fix button click issues
+            document.querySelectorAll('a, button').forEach(element => {
+                element.style.pointerEvents = 'auto';
+                element.style.cursor = 'pointer';
+            });
         });
     </script>
 </body>
 
-<<<<<<< HEAD
 </html>
 
 <!--
@@ -100,6 +96,3 @@
     - Published works showcase
     - Purchase/Learn more options
 -->
-=======
-</html>
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26

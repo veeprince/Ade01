@@ -34,13 +34,9 @@
                                 <i data-feather="map-pin" class="text-teal-500 mt-1 mr-3"></i>
                                 <div>
                                     <h4 class="font-medium">Address</h4>
-<<<<<<< HEAD
                                     <p class="text-gray-600">England, United Kingdom<br>
                                         <span style="font-size:2rem;" aria-label="UK Flag">🇬🇧</span>
                                     </p>
-=======
-                                    <p class="text-gray-600">Innovateur Africa Consult<br>Lagos, Nigeria</p>
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -54,17 +50,12 @@
                                 <i data-feather="mail" class="text-teal-500 mt-1 mr-3"></i>
                                 <div>
                                     <h4 class="font-medium">Email</h4>
-<<<<<<< HEAD
                                     <p class="text-gray-600">info@odedinaadeniyi.com</p>
-=======
-                                    <p class="text-gray-600">innovateurr@gmail.com</p>
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div data-aos="fade-left">
-<<<<<<< HEAD
                         <form class="bg-white rounded-lg shadow-xl p-8"
                             action="mailto:info@odedinaadeniyi.com"
                             method="POST"
@@ -90,36 +81,6 @@
                                 Send Message
                             </button>
                         </form>
-=======
-                        <form class="bg-white rounded-lg shadow-xl p-8" id="contactForm" onsubmit="return sendBoth(event);">
-                            <h3 class="text-xl font-semibold mb-6">Send us a Message</h3>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2">Full Name</label>
-                                <input type="text" id="fullName" name="entry.123456789"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
-                            </div>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2">Email</label>
-                                <input type="email" id="email" name="entry.987654321"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
-                            </div>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2">Message</label>
-                                <textarea rows="4" id="message" name="entry.192837465"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required></textarea>
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-[#1C80A4] text-white py-3 rounded-md font-medium hover:bg-[#1890B4] transition">Send
-                                Message</button>
-                        </form>
-                        <!-- Hidden form for Google Forms submission -->
-                        <form id="hiddenGoogleForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdEXAMPLEID/formResponse" method="POST" target="hidden_iframe" style="display:none;">
-                            <input type="text" name="entry.123456789" id="g_name">
-                            <input type="email" name="entry.987654321" id="g_email">
-                            <textarea name="entry.192837465" id="g_message"></textarea>
-                        </form>
-                        <iframe name="hidden_iframe" style="display:none;"></iframe>
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26
                     </div>
                 </div>
             </div>
@@ -141,7 +102,6 @@
             // Feather icons
             feather.replace();
         });
-<<<<<<< HEAD
     </script>
 </body>
 
@@ -153,35 +113,3 @@
     - Direct communication channels
     - Professional inquiries
 -->
-=======
-
-        function sendBoth(event) {
-            event.preventDefault();
-            var name = document.getElementById('fullName').value.trim();
-            var email = document.getElementById('email').value.trim();
-            var message = document.getElementById('message').value.trim();
-
-            // Fill hidden Google Form fields
-            document.getElementById('g_name').value = name;
-            document.getElementById('g_email').value = email;
-            document.getElementById('g_message').value = message;
-
-            // Submit hidden form to Google Forms
-            document.getElementById('hiddenGoogleForm').submit();
-
-            // Open mail client
-            var subject = encodeURIComponent('Contact Form Message from ' + name);
-            var body = encodeURIComponent(
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n\n' +
-                'Message:\n' + message
-            );
-            window.location.href = 'mailto:innovateurr@gmail.com?subject=' + subject + '&body=' + body;
-
-            return false;
-        }
-    </script>
-</body>
-
-</html>
->>>>>>> 387d06e26fd933a62c7fbd9796bd0fc533dede26

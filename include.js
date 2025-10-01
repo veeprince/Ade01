@@ -55,4 +55,33 @@ async function includeHTML() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle file includes
+    const includes = document.querySelectorAll('[data-include]');
+    
+    includes.forEach(function(element) {
+        const file = element.getAttribute('data-include');
+        
+        fetch(file)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                element.innerHTML = data;
+                
+                // Re-initialize scripts after content loads
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading include file:', file, error);
+                element.innerHTML = `<p>Error loading ${file}</p>`;
+            });
+    });
+});
+
 document.addEventListener('DOMContentLoaded', includeHTML);
