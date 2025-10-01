@@ -34,10 +34,11 @@
                 <!-- Mobile menu button -->
                 <div class="-mr-2 flex md:hidden">
                     <button id="mobile-menu-button" type="button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 transition-all duration-200"
                         aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <!-- Hamburger icon -->
+                        <svg class="block h-6 w-6 transition-transform duration-200" id="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
@@ -45,7 +46,7 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg transform opacity-0 transition-all duration-200">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition"
                     id="about-link-mobile">About</a>
@@ -70,60 +71,68 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Simple hamburger menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function () {
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'true');
-                } else {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                }
-            });
+        // Cache DOM elements
+        const elements = {
+            button: document.getElementById('mobile-menu-button'),
+            menu: document.getElementById('mobile-menu'),
+            icon: document.getElementById('menu-icon'),
+            desktopLinks: document.querySelectorAll('[id$="-link"]'),
+            mobileLinks: document.querySelectorAll('[id$="-link-mobile"]')
+        };
 
-            // Close menu when clicking on mobile menu links
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                });
-            });
+        // Optimize toggle function
+        const toggleMenu = (show) => {
+            const { menu, button, icon } = elements;
+            const classList = menu.classList;
+            
+            classList.toggle('hidden', !show);
+            classList.toggle('opacity-0', !show);
+            classList.toggle('opacity-100', show);
+            icon.classList.toggle('rotate-90', show);
+            button.setAttribute('aria-expanded', show);
+        };
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function (event) {
-                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
+        // Event handlers
+        const handleClick = (e) => {
+            const { button, menu } = elements;
+            const isOutsideClick = !button.contains(e.target) && !menu.contains(e.target);
+            
+            if (isOutsideClick) {
+                toggleMenu(false);
+            }
+        };
 
-        // Set active navigation link
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        const pageName = currentPage.replace('.html', '');
+        const handleButtonClick = (e) => {
+            e.stopPropagation();
+            const isHidden = elements.menu.classList.contains('hidden');
+            toggleMenu(isHidden);
+        };
 
-        // Update desktop menu
-        const activeLink = document.getElementById(pageName + '-link');
-        if (activeLink) {
-            activeLink.classList.remove('text-gray-600');
-            activeLink.classList.add('text-teal-600', 'font-medium');
-        }
+        const handleLinkClick = function() {
+            elements.mobileLinks.forEach(link => link.classList.remove('text-teal-600'));
+            this.classList.add('text-teal-600');
+            toggleMenu(false);
+        };
 
-        // Update mobile menu
-        const activeMobileLink = document.getElementById(pageName + '-link-mobile');
-        if (activeMobileLink) {
-            activeMobileLink.classList.remove('text-gray-600');
-            activeMobileLink.classList.add('text-teal-600', 'font-medium');
-        }
+        // Set active link based on current page
+        const setActiveLink = () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageName = currentPage.replace('.html', '');
+            
+            document.getElementById(`${pageName}-link`)?.classList.add('text-teal-600', 'font-medium');
+            document.getElementById(`${pageName}-link-mobile`)?.classList.add('text-teal-600', 'font-medium');
+        };
 
-        // Feather icons
-        if (window.feather) {
-            feather.replace();
-        }
+        // Initialize
+        const init = () => {
+            if (elements.button && elements.menu) {
+                elements.button.addEventListener('click', handleButtonClick);
+                elements.mobileLinks.forEach(link => link.addEventListener('click', handleLinkClick));
+                document.addEventListener('click', handleClick);
+                setActiveLink();
+            }
+        };
+
+        init();
     });
 </script>
