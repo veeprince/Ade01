@@ -1,121 +1,102 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <!-- ...existing code... -->
-  <style>
-    /* ...existing code... */
-    #mobile-menu {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transition: max-height 250ms ease-out, 
-                    opacity 200ms ease-out,
-                    visibility 0s linear 250ms;
-    }
-    #mobile-menu.expanded {
-        max-height: 100vh;
-        opacity: 1;
-        visibility: visible;
-        transition: max-height 250ms ease-in,
-                    opacity 200ms ease-in,
-                    visibility 0s linear 0s;
-    }
-
-    /* Slight accessibility helpers so hidden state is clear in CSS too */
-    #mobile-menu[aria-hidden="true"] { pointer-events: none; }
-    #mobile-menu[aria-hidden="false"] { pointer-events: auto; }
-
-    /* Minor utility so the rotating icon animates */
-    .transform { transform-origin: center; }
-
-    /* ADDED: layer menu over navbar and prevent background scroll */
-    #mobile-menu { position: absolute; top: 100%; left: 0; right: 0; z-index: 1200; }
-    body.no-scroll { overflow: hidden; }
-  </style>
-</head>
-<body class="font-sans antialiased text-gray-800">
-  <!-- ...existing code... -->
-  <script>
+<div class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center hover:text-[#1C80A4] transition-colors duration-200">
+                        <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/2.png"
+                            class="h-8 w-8 rounded-full">
+                        <span class="ml-2 text-xl font-bold text-gray-800">Odedina Adeniyi</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="about.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="about-link">About</a>
+                        <a href="awards.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="awards-link">Awards</a>
+                        <a href="books.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="books-link">Books</a>
+                        <a href="events.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="events-link">Events</a>
+                        <a href="outreach.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="outreach-link">Outreach</a>
+                        <a href="volunteer.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="volunteer-link">Volunteer</a>
+                        <a href="contact.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="contact-link">Contact</a>
+                        <a href="consultation.html"
+                            class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
+                            id="consultation-link">Consult</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="about.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="about-link-mobile">About</a>
+                <a href="awards.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="awards-link-mobile">Awards</a>
+                <a href="books.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="books-link-mobile">Books</a>
+                <a href="events.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="events-link-mobile">Events</a>
+                <a href="outreach.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="outreach-link-mobile">Outreach</a>
+                <a href="volunteer.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="volunteer-link-mobile">Volunteer</a>
+                <a href="contact.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="contact-link-mobile">Contact</a>
+                <a href="consultation.html"
+                    class="block bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
+                    id="consultation-link-mobile">Consult</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
-        try {
-            // Cache DOM queries
-            const elements = {
-                button: document.getElementById('mobile-menu-button'),
-                menu: document.getElementById('mobile-menu'),
-                icon: document.getElementById('menu-icon'),
-                desktopLinks: new Set(document.querySelectorAll('[id$="-link"]')),
-                mobileLinks: new Set(document.querySelectorAll('[id$="-link-mobile"]'))
-            };
+        // Hamburger menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
-            if (!elements.button || !elements.menu) {
-                throw new Error('Required navigation elements not found');
-            }
+        // Set active navigation link
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const pageName = currentPage.replace('.html', '');
 
-            const TRANSITION_MS = 250;
-            let hideTimeout = null;
+        // Update desktop menu
+        const activeLink = document.getElementById(pageName + '-link');
+        if (activeLink) {
+            activeLink.classList.remove('text-gray-600');
+            activeLink.classList.add('text-teal-600', 'font-medium');
+        }
 
-            // ADDED: define setActiveLink to avoid ReferenceError
-            const setActiveLink = () => {
-              const page = (window.location.pathname.split('/').pop() || 'index.html').replace('.html','');
-              const desktop = document.getElementById(`${page}-link`);
-              const mobile  = document.getElementById(`${page}-link-mobile`);
-              desktop && desktop.classList.add('text-teal-600','font-medium');
-              mobile  && mobile.classList.add('text-teal-600','font-medium');
-            };
+        // Update mobile menu
+        const activeMobileLink = document.getElementById(pageName + '-link-mobile');
+        if (activeMobileLink) {
+            activeMobileLink.classList.remove('text-gray-600');
+            activeMobileLink.classList.add('text-teal-600', 'font-medium');
+        }
 
-            const toggleMenu = (show) => {
-                try {
-                    const { menu, button, icon } = elements;
-
-                    if (hideTimeout) {
-                        clearTimeout(hideTimeout);
-                        hideTimeout = null;
-                    }
-
-                    menu.classList.toggle('expanded', show);
-                    icon?.classList.toggle('rotate-90', show);
-                    button.setAttribute('aria-expanded', String(show));
-                    menu.setAttribute('aria-hidden', String(!show));
-                    // ADDED: lock/unlock background scroll
-                    document.body.classList.toggle('no-scroll', show);
-
-                    if (!show) {
-                        hideTimeout = setTimeout(() => { hideTimeout = null; }, TRANSITION_MS);
-                    }
-                } catch (error) {
-                    console.error('Error toggling menu:', error);
-                }
-            };
-
-            const handleDocumentClick = (e) => {
-                const { button, menu } = elements;
-                if (!button.contains(e.target) && !menu.contains(e.target)) {
-                    toggleMenu(false);
-                }
-            };
-
-            const init = () => {
-                elements.button.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isExpanded = elements.menu.classList.contains('expanded');
-                    toggleMenu(!isExpanded);
-                });
-
-                document.addEventListener('click', handleDocumentClick);
-
-                // Initialize state
-                toggleMenu(false);
-                setActiveLink(); // now defined
-            };
-
-            init();
-
-        } catch (error) {
-            console.error('Navigation initialization failed:', error);
+        // Feather icons
+        if (window.feather) {
+            feather.replace();
         }
     });
-  </script>
-  <!-- ...existing code... -->
-</body>
-</html>
+</script>
