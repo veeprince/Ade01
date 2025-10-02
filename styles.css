@@ -51,7 +51,56 @@ button:hover, .btn:hover {
                 opacity 200ms ease-in,
                 visibility 0s linear 0s;
 }
+/* Mobile Menu Styles - FOR HAMBURGER FUNCTIONALITY */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 250ms ease-out,
+                opacity 200ms ease-out,
+                visibility 0s linear 250ms;
+}
+#mobile-menu.expanded {
+    max-height: 100vh;
+    opacity: 1;
+    visibility: visible;
+    transition: max-height 250ms ease-in,
+                opacity 200ms ease-in,
+                visibility 0s linear 0s;
+}
 
+/* ADD THIS BLOCK BELOW */
+#mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+}
+#mobile-menu.expanded {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+body.no-scroll { overflow: hidden; }
+#mobile-menu a:focus-visible,
+#mobile-menu button:focus-visible {
+  outline: 2px solid #1C80A4;
+  outline-offset: 2px;
+}
+#mobile-menu-button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  #mobile-menu { transition: none !important; }
+}
+
+/* Hero Section Styles */
+.hero-gradient {
+  /* ...existing code... */
+}
 /* Hamburger button transition */
 #mobile-menu-button {
     transition: background-color 0.2s ease;

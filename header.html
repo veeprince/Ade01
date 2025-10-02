@@ -1,18 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Navigation — Slide-down Demo</title>
-
-  <!-- If you use Tailwind, keep your Tailwind build included here -->
-  <!-- <link href="path/to/your/tailwind.css" rel="stylesheet"> -->
-
+  <!-- ...existing code... -->
   <style>
-    /* Slide-down + fade CSS for mobile menu.
-       We animate max-height for slide effect and opacity for fade.
-       Use a conservative max-height that comfortably fits your menu.
-    */
+    /* ...existing code... */
     #mobile-menu {
         max-height: 0;
         overflow: hidden;
@@ -37,70 +28,14 @@
 
     /* Minor utility so the rotating icon animates */
     .transform { transform-origin: center; }
+
+    /* ADDED: layer menu over navbar and prevent background scroll */
+    #mobile-menu { position: absolute; top: 100%; left: 0; right: 0; z-index: 1200; }
+    body.no-scroll { overflow: hidden; }
   </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
-
-  <div class="font-sans antialiased text-gray-800">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-          <div class="flex-shrink-0 flex items-center">
-            <!-- Added id="index-link" so homepage/brand can be active -->
-            <a id="index-link" href="index.html" class="flex items-center hover:text-[#1C80A4] transition-colors duration-200">
-              <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/2.png"
-                   class="h-8 w-8 rounded-full" alt="Odedina Adeniyi">
-              <span class="ml-2 text-xl font-bold text-gray-800">Odedina Adeniyi</span>
-            </a>
-          </div>
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-center space-x-8">
-              <a href="about.html" class="text-gray-600 hover:text-teal-600 transition" id="about-link">About</a>
-              <a href="awards.html" class="text-gray-600 hover:text-teal-600 transition" id="awards-link">Awards</a>
-              <a href="books.html" class="text-gray-600 hover:text-teal-600 transition" id="books-link">Books</a>
-              <a href="events.html" class="text-gray-600 hover:text-teal-600 transition" id="events-link">Events</a>
-              <a href="outreach.html" class="text-gray-600 hover:text-teal-600 transition" id="outreach-link">Outreach</a>
-              <a href="volunteer.html" class="text-gray-600 hover:text-teal-600 transition" id="volunteer-link">Volunteer</a>
-              <a href="contact.html" class="text-gray-600 hover:text-teal-600 transition" id="contact-link">Contact</a>
-              <a href="consultation.html"
-                 class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition"
-                 id="consultation-link">Consult</a>
-            </div>
-          </div>
-
-          <!-- Mobile menu button -->
-          <div class="-mr-2 flex md:hidden">
-            <button id="mobile-menu-button" type="button"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 transition-all duration-200"
-                    aria-controls="mobile-menu" aria-expanded="false">
-              <span class="sr-only">Open main menu</span>
-              <!-- Hamburger icon: added transform utility so rotate classes animate -->
-              <svg class="block h-6 w-6 transform transition-transform duration-200" id="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile Menu: slide-down hidden by default -->
-      <div id="mobile-menu" class="md:hidden bg-white shadow-lg" aria-hidden="true">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="about-link-mobile">About</a>
-          <a href="awards.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="awards-link-mobile">Awards</a>
-          <a href="books.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="books-link-mobile">Books</a>
-          <a href="events.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="events-link-mobile">Events</a>
-          <a href="outreach.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="outreach-link-mobile">Outreach</a>
-          <a href="volunteer.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="volunteer-link-mobile">Volunteer</a>
-          <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-[#1C80A4] transition" id="contact-link-mobile">Contact</a>
-          <a href="consultation.html"
-             class="block bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition" id="consultation-link-mobile">Consult</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-
+  <!-- ...existing code... -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         try {
@@ -113,7 +48,6 @@
                 mobileLinks: new Set(document.querySelectorAll('[id$="-link-mobile"]'))
             };
 
-            // Validate required elements
             if (!elements.button || !elements.menu) {
                 throw new Error('Required navigation elements not found');
             }
@@ -121,20 +55,19 @@
             const TRANSITION_MS = 250;
             let hideTimeout = null;
 
-            // Clean up function to remove event listeners
-            const cleanup = () => {
-                document.removeEventListener('click', handleDocumentClick);
-                if (hideTimeout) {
-                    clearTimeout(hideTimeout);
-                    hideTimeout = null;
-                }
+            // ADDED: define setActiveLink to avoid ReferenceError
+            const setActiveLink = () => {
+              const page = (window.location.pathname.split('/').pop() || 'index.html').replace('.html','');
+              const desktop = document.getElementById(`${page}-link`);
+              const mobile  = document.getElementById(`${page}-link-mobile`);
+              desktop && desktop.classList.add('text-teal-600','font-medium');
+              mobile  && mobile.classList.add('text-teal-600','font-medium');
             };
 
-            // Toggle menu with improved error handling
             const toggleMenu = (show) => {
                 try {
                     const { menu, button, icon } = elements;
-                    
+
                     if (hideTimeout) {
                         clearTimeout(hideTimeout);
                         hideTimeout = null;
@@ -144,18 +77,17 @@
                     icon?.classList.toggle('rotate-90', show);
                     button.setAttribute('aria-expanded', String(show));
                     menu.setAttribute('aria-hidden', String(!show));
-                    
+                    // ADDED: lock/unlock background scroll
+                    document.body.classList.toggle('no-scroll', show);
+
                     if (!show) {
-                        hideTimeout = setTimeout(() => {
-                            hideTimeout = null;
-                        }, TRANSITION_MS);
+                        hideTimeout = setTimeout(() => { hideTimeout = null; }, TRANSITION_MS);
                     }
                 } catch (error) {
                     console.error('Error toggling menu:', error);
                 }
             };
 
-            // Improved event handlers
             const handleDocumentClick = (e) => {
                 const { button, menu } = elements;
                 if (!button.contains(e.target) && !menu.contains(e.target)) {
@@ -163,7 +95,6 @@
                 }
             };
 
-            // Initialize with error handling
             const init = () => {
                 elements.button.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -173,12 +104,9 @@
 
                 document.addEventListener('click', handleDocumentClick);
 
-                // Handle cleanup on page unload
-                window.addEventListener('unload', cleanup);
-
-                // Set initial states
+                // Initialize state
                 toggleMenu(false);
-                setActiveLink();
+                setActiveLink(); // now defined
             };
 
             init();
@@ -188,6 +116,6 @@
         }
     });
   </script>
-
+  <!-- ...existing code... -->
 </body>
 </html>
