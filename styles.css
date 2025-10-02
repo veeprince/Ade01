@@ -1,26 +1,27 @@
 /* Basic styles for the website */
 
+/* Service Card Styles */
 .service-card {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
 }
 
-/* Ensure buttons are clickable */
+/* Button Styles */
 button, .btn, a[role="button"] {
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
-/* Fix any z-index issues */
 button:hover, .btn:hover {
     z-index: 10;
     position: relative;
+    transform: translateY(-2px);
 }
 
 /* Site Title Styles */
@@ -28,121 +29,102 @@ button:hover, .btn:hover {
     text-decoration: none;
     transition: color 0.2s ease;
 }
-
 .flex-shrink-0 a:hover span {
     color: #1C80A4;
 }
+
+/* Mobile Menu Styles - FOR HAMBURGER FUNCTIONALITY */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 250ms ease-out,
+                opacity 200ms ease-out,
+                visibility 0s linear 250ms;
+}
+#mobile-menu.expanded {
+    max-height: 100vh;
+    opacity: 1;
+    visibility: visible;
+    transition: max-height 250ms ease-in,
+                opacity 200ms ease-in,
+                visibility 0s linear 0s;
+}
+
+/* Hamburger button transition */
+#mobile-menu-button {
+    transition: background-color 0.2s ease;
+}
+#menu-icon {
+    transition: transform 0.2s ease;
+}
+#mobile-menu-button[aria-expanded="true"] #menu-icon {
+    transform: rotate(90deg);
+}
+
+/* Accessibility helpers */
+#mobile-menu[aria-hidden="true"] { pointer-events: none; }
+#mobile-menu[aria-hidden="false"] { pointer-events: auto; }
 
 /* Hero Section Styles */
 .hero-gradient {
     background: linear-gradient(135deg, rgba(28, 128, 164, 0.9) 0%, rgba(24, 144, 180, 0.9) 100%);
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
-}
-
-.hovered-element {
-    filter: drop-shadow(0 0 8px #1C80A4);
-}
-
-::selection {
-    background: #1C80A4;
-    color: white;
-}
+/* General Styles */
+.hovered-element { filter: drop-shadow(0 0 8px #1C80A4); }
+::selection { background: #1C80A4; color: white; }
 .testimonial-card {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
 }
+
+/* Body and Layout Styles */
+html, body { overflow-x: hidden; margin: 0; padding: 0; }
 body {
     opacity: 1;
     transition: opacity 0.3s ease;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
 }
-body.fade-out {
-    opacity: 0;
-}
-main {
-    flex: 1 0 auto;
-    min-height: 0;
-}
-footer {
-    flex-shrink: 0;
-    margin-top: auto;
-}
-/* Clean page endings */
-body {
-    margin: 0;
-    padding: 0;
-}
+body.fade-out { opacity: 0; }
+main { flex: 1 0 auto; min-height: 0; }
+footer { flex-shrink: 0; margin-top: auto; margin-bottom: 0; padding-bottom: 0; }
+footer *:last-child { margin-bottom: 0; }
 
-footer {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* Remove any default margins from last elements */
-footer *:last-child {
-    margin-bottom: 0;
-}
-
-html, body {
-    overflow-x: hidden;
-}
-[data-aos] {
-    transition-property: transform, opacity;
-}
-.service-card, .blog-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-a {
-    transition: color 0.2s ease;
-}
-button, .btn {
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-button:hover, .btn:hover {
-    transform: translateY(-2px);
-}
+/* Animation Styles - CONSOLIDATED */
+[data-aos] { transition-property: transform, opacity; }
+.service-card, .blog-card, .book-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.service-card:hover, .blog-card:hover { transform: translateY(-5px); }
+a { transition: color 0.2s ease; }
 
 /* Books Page Specific Styles */
 .books-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     max-width: 64rem;
     margin: 0 auto;
 }
-
 @media (max-width: 768px) {
-    .books-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
+    .books-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
-
 .book-card {
     background: white;
     padding: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .book-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2);
 }
-
 .book-image-fallback {
     background: #f3f4f6;
     border: 2px dashed #d1d5db;
@@ -154,7 +136,6 @@ button:hover, .btn:hover {
     width: 100%;
     color: #6b7280;
 }
-
 .get-book-btn {
     background: #1C80A4;
     color: white;
@@ -173,7 +154,6 @@ button:hover, .btn:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 .get-book-btn:hover {
     background: #1890B4;
     border-color: #1890B4;
@@ -181,7 +161,6 @@ button:hover, .btn:hover {
     box-shadow: 0 16px 32px rgba(28, 128, 164, 0.5);
     color: white;
 }
-
 .book-image {
     height: 100%;
     width: 100%;
@@ -189,7 +168,6 @@ button:hover, .btn:hover {
     object-fit: contain;
     object-position: center;
 }
-
 .books-section-bottom {
     text-align: center;
     margin-top: 3rem;
