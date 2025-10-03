@@ -67,3 +67,10 @@
         </div>
     </nav>
 </div>
+<script>
+    // Fix any mailto links in the header after it loads
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+</script>

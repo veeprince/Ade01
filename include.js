@@ -62,8 +62,31 @@ function initializeComponents() {
         feather.replace();
     }
     
+    // Fix mailto links to prevent mixed content issues
+    fixMailtoLinks();
+    
     // Set up smooth page transitions
     setupPageTransitions();
+}
+
+function fixMailtoLinks() {
+    // Find all mailto links and ensure they don't cause mixed content issues
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        // Ensure the link opens in a new window/tab to avoid navigation issues
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+        
+        // Add click handler to ensure compatibility
+        link.addEventListener('click', function(e) {
+            // Let the browser handle mailto: links naturally
+            // This prevents any form submission behavior
+            const email = this.href.replace('mailto:', '');
+            if (email) {
+                window.location.href = this.href;
+            }
+            e.stopPropagation();
+        });
+    });
 }
 
 function setupPageTransitions() {
