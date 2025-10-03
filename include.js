@@ -1,87 +1,91 @@
-async function includeHTML() {
-    const includes = document.querySelectorAll('[data-include]');
-    for (const el of includes) {
-        const file = el.getAttribute('data-include');
-        if (file) {
-            try {
-                // Try XMLHttpRequest which works with both http:// and file:// protocols
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', file, false);  // false makes it synchronous
-                xhr.send();
-                if (xhr.status === 200 || xhr.status === 0) { // 0 for local files
-                    el.innerHTML = xhr.responseText;
-                }
-            } catch (err) {
-                console.error(`Failed to load ${file}:`, err);
-                // Fallback to fetch for http/https
-                try {
-                    const resp = await fetch(file);
-                    if (resp.ok) {
-                        el.innerHTML = await resp.text();
-                    }
-                } catch (fetchErr) {
-                    console.error(`Fetch fallback failed for ${file}:`, fetchErr);
-                }
+// Set up event delegation immediately - works even if elements don't exist yet
+document.addEventListener('click', function(e) {
+    if (e.target.closest('#mobile-menu-button')) {
+        const menu = document.getElementById('mobile-menu');
+        const button = document.getElementById('mobile-menu-button');
+        
+        if (menu) {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('expanded');
+            
+            if (button) {
+                const isExpanded = !menu.classList.contains('hidden');
+                button.setAttribute('aria-expanded', isExpanded);
             }
         }
     }
-    // After all includes are loaded, initialize feather icons and other components
-    if (window.feather) {
+});
+
+// Define toggle function immediately - before any DOM processing
+window.toggleMobileMenu = function() {
+    const menu = document.getElementById('mobile-menu');
+    const button = document.getElementById('mobile-menu-button');
+    
+    if (menu) {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('expanded');
+        
+        if (button) {
+            const isExpanded = !menu.classList.contains('hidden');
+            button.setAttribute('aria-expanded', isExpanded);
+        }
+    }
+};
+
+async function includeHTML() {
+    const includes = document.querySelectorAll('[data-include]');
+    
+    // Process all includes
+    for (const element of includes) {
+        const file = element.getAttribute('data-include');
+        if (!file) continue;
+        
+        try {
+            const response = await fetch(file);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            element.innerHTML = await response.text();
+        } catch (error) {
+            console.error(`Error loading ${file}:`, error);
+            element.innerHTML = `<p>Error loading ${file}</p>`;
+        }
+    }
+    
+    // Initialize components after all includes are loaded
+    initializeComponents();
+}
+
+function initializeComponents() {
+    // Initialize feather icons
+    if (window.feather && typeof window.feather.replace === 'function') {
         feather.replace();
     }
-
-    // Re-initialize mobile menu after header is loaded
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function () {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
+    
     // Set up smooth page transitions
+    setupPageTransitions();
+}
+
+function setupPageTransitions() {
     document.querySelectorAll('a').forEach(link => {
-        if (link.href.includes(window.location.hostname) &&
-            !link.href.includes('#') &&
-            link.href !== window.location.href) {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.body.classList.add('fade-out');
-                setTimeout(() => {
-                    window.location.href = link.href;
-                }, 300);
-            });
+        // Skip if already has listener or is external/anchor link
+        if (link.dataset.transitionReady || 
+            !link.href.includes(window.location.hostname) ||
+            link.href.includes('#') ||
+            link.href === window.location.href) {
+            return;
         }
+        
+        link.dataset.transitionReady = 'true';
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 300);
+        });
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle file includes
-    const includes = document.querySelectorAll('[data-include]');
-    
-    includes.forEach(function(element) {
-        const file = element.getAttribute('data-include');
-        
-        fetch(file)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                element.innerHTML = data;
-                
-                // Re-initialize scripts after content loads
-                if (typeof feather !== 'undefined') {
-                    feather.replace();
-                }
-            })
-            .catch(error => {
-                console.error('Error loading include file:', file, error);
-                element.innerHTML = `<p>Error loading ${file}</p>`;
-            });
-    });
-});
-
+// Single DOMContentLoaded listener
 document.addEventListener('DOMContentLoaded', includeHTML);
