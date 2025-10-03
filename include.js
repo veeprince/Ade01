@@ -62,29 +62,47 @@ function initializeComponents() {
         feather.replace();
     }
     
-    // Fix mailto links to prevent mixed content issues
+    // Fix mailto forms and links to prevent mixed content issues
+    fixMailtoForms();
     fixMailtoLinks();
     
     // Set up smooth page transitions
     setupPageTransitions();
 }
 
+function fixMailtoForms() {
+    // Find any forms using mailto: action and convert them to proper contact links
+    document.querySelectorAll('form[action^="mailto:"]').forEach(form => {
+        const email = form.getAttribute('action').replace('mailto:', '');
+        
+        // Create a simple contact link instead
+        const contactDiv = document.createElement('div');
+        contactDiv.className = 'text-center p-4';
+        contactDiv.innerHTML = `
+            <p class="mb-4 text-gray-600">Contact me directly:</p>
+            <a href="mailto:${email}" 
+               class="bg-[#1C80A4] text-white px-6 py-3 rounded-md hover:bg-[#1890B4] transition inline-block"
+               target="_blank" 
+               rel="noopener noreferrer">
+               Send Email
+            </a>
+        `;
+        
+        // Replace the form with the contact div
+        form.parentNode.replaceChild(contactDiv, form);
+    });
+}
+
 function fixMailtoLinks() {
     // Find all mailto links and ensure they don't cause mixed content issues
     document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-        // Ensure the link opens in a new window/tab to avoid navigation issues
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
         
-        // Add click handler to ensure compatibility
+        // Remove any form-like behavior
         link.addEventListener('click', function(e) {
-            // Let the browser handle mailto: links naturally
-            // This prevents any form submission behavior
-            const email = this.href.replace('mailto:', '');
-            if (email) {
-                window.location.href = this.href;
-            }
             e.stopPropagation();
+            // Let browser handle mailto naturally
         });
     });
 }

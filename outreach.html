@@ -6,7 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outreach | Odedina Adeniyi</title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1C80A4',
+                        'primary-dark': '#1890B4'
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -30,22 +42,13 @@
                 <div class="md:flex items-center">
                     <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
                         <h3 class="text-2xl font-semibold mb-4">Outreach</h3>
-                        <p class="text-gray-600 mb-6">Odedina Adeniyi's deep passion for accessible optimal healthcare
-                            has
-                            led him to engage in different outreaches across Africa. The health of humanity is our
-                            collective responsibility.</p>
-                        <form action="mailto:info@odedinaadeniyi.com"
-                              method="POST"
-                              enctype="text/plain"
-                              onsubmit="setTimeout(function(){ window.location = 'thank-you.html?type=outreach'; }, 1000);"
-                              class="inline-block">
-                            <input type="hidden" name="Subject" value="Outreach Interest">
-                            <input type="hidden" name="Message" value="I am interested in learning more about the outreach programs.">
-                            <button type="submit" 
-                                class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition">
-                                Get Involve
-                            </button>
-                        </form>
+                        <p class="text-gray-600 mb-6">Odedina Adeniyi's deep passion for accessible optimal healthcare has led him to engage in different outreaches across Africa. The health of humanity is our collective responsibility.</p>
+                        <a href="mailto:info@odedinaadeniyi.com?subject=Outreach Interest&body=I am interested in learning more about the outreach programs."
+                           class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block"
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Get Involved
+                        </a>
                     </div>
                     <div class="md:w-1/2 md:pl-16" data-aos="fade-left">
                         <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/Nurse%20week%201.jpg"
@@ -78,19 +81,14 @@
 
                 <!-- Get Involved Section -->
                 <div class="mt-8 p-6 bg-gray-50 rounded-lg">
-                    <form action="mailto:info@odedinaadeniyi.com"
-                          method="POST"
-                          enctype="text/plain"
-                          onsubmit="setTimeout(function(){ window.location = 'thank-you.html?type=outreach'; }, 1000);">
-                        <h4 class="text-lg font-semibold mb-4">Get Involved in Our Mission</h4>
-                        <p class="text-gray-600 mb-6">Join our community initiatives and make a difference in healthcare accessibility.</p>
-                        <input type="hidden" name="Subject" value="Outreach Program Interest">
-                        <input type="hidden" name="Message" value="I am interested in learning more about your outreach programs and how I can contribute.">
-                        <button type="submit" 
-                            class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition">
-                            Get Involve
-                        </button>
-                    </form>
+                    <h4 class="text-lg font-semibold mb-4">Get Involved in Our Mission</h4>
+                    <p class="text-gray-600 mb-6">Join our community initiatives and make a difference in healthcare accessibility.</p>
+                    <a href="mailto:info@odedinaadeniyi.com?subject=Outreach Program Interest&body=I am interested in learning more about your outreach programs and how I can contribute."
+                       class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Get Involved
+                    </a>
                 </div>
             </div>
         </section>
@@ -101,14 +99,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize AOS
-            AOS.init({
-                duration: 600,
-                easing: 'ease-out-quad',
-                once: true
-            });
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 600,
+                    easing: 'ease-out-quad',
+                    once: true
+                });
+            }
 
             // Feather icons
-            feather.replace();
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
         });
     </script>
 </body>

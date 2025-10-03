@@ -68,7 +68,18 @@
     </nav>
 </div>
 <script>
-    // Fix any mailto links in the header after it loads
+    // Fix any mailto forms and links in the header after it loads
+    document.querySelectorAll('form[action^="mailto:"]').forEach(form => {
+        const email = form.getAttribute('action').replace('mailto:', '');
+        const contactLink = document.createElement('a');
+        contactLink.href = `mailto:${email}`;
+        contactLink.target = '_blank';
+        contactLink.rel = 'noopener noreferrer';
+        contactLink.className = 'bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition';
+        contactLink.textContent = 'Contact';
+        form.parentNode.replaceChild(contactLink, form);
+    });
+    
     document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
