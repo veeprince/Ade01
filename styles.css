@@ -1,54 +1,26 @@
-.hero-gradient {
-    background: linear-gradient(135deg, rgba(28,128,164,0.9) 0%, rgba(24,144,180,0.9) 100%);
+/* Basic styles for the website */
+
+/* Service Card Styles */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
 }
-.hovered-element {
-    filter: drop-shadow(0 0 8px #1C80A4);
-}
-::selection {
-    background: #1C80A4;
-    color: white;
-}
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-}
-body {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-}
-body.fade-out {
-    opacity: 0;
-}
-main {
-    flex: 1 0 auto;
-    min-height: 0;
-}
-footer {
-    flex-shrink: 0;
-    margin-top: auto;
-}
-[data-aos] {
-    transition-property: transform, opacity;
-}
-.service-card, .blog-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-a {
-    transition: color 0.2s ease;
-}
-button, .btn {
+
+/* Button Styles */
+button, .btn, a[role="button"] {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 button:hover, .btn:hover {
+    z-index: 10;
+    position: relative;
     transform: translateY(-2px);
 }
 
@@ -57,9 +29,59 @@ button:hover, .btn:hover {
     text-decoration: none;
     transition: color 0.2s ease;
 }
-
 .flex-shrink-0 a:hover span {
     color: #1C80A4;
+}
+
+/* Mobile Menu Styles - CONSOLIDATED */
+#mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 250ms ease-out, opacity 200ms ease-out, visibility 0s linear 250ms;
+}
+#mobile-menu.expanded {
+    max-height: 100vh;
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: max-height 250ms ease-in, opacity 200ms ease-in, visibility 0s linear 0s;
+}
+
+/* Mobile Menu Button Styles */
+#mobile-menu-button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: background-color 0.2s ease;
+}
+#menu-icon {
+    transition: transform 0.2s ease;
+}
+#mobile-menu-button[aria-expanded="true"] #menu-icon {
+    transform: rotate(90deg);
+}
+
+/* Accessibility and Focus Styles */
+body.no-scroll { overflow: hidden; }
+#mobile-menu a:focus-visible,
+#mobile-menu button:focus-visible {
+    outline: 2px solid #1C80A4;
+    outline-offset: 2px;
+}
+#mobile-menu[aria-hidden="true"] { pointer-events: none; }
+#mobile-menu[aria-hidden="false"] { pointer-events: auto; }
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    #mobile-menu { transition: none !important; }
 }
 
 /* Hero Section Styles */
@@ -67,16 +89,105 @@ button:hover, .btn:hover {
     background: linear-gradient(135deg, rgba(28, 128, 164, 0.9) 0%, rgba(24, 144, 180, 0.9) 100%);
 }
 
-.service-card:hover {
+/* General Styles */
+.hovered-element { filter: drop-shadow(0 0 8px #1C80A4); }
+::selection { background: #1C80A4; color: white; }
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+/* Body and Layout Styles */
+html, body { overflow-x: hidden; margin: 0; padding: 0; }
+body {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body.fade-out { opacity: 0; }
+main { flex: 1 0 auto; min-height: 0; }
+footer { flex-shrink: 0; margin-top: auto; margin-bottom: 0; padding-bottom: 0; }
+footer *:last-child { margin-bottom: 0; }
+
+/* Animation Styles - CONSOLIDATED */
+[data-aos] { transition-property: transform, opacity; }
+.service-card, .blog-card, .book-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.service-card:hover, .blog-card:hover { transform: translateY(-5px); }
+a { transition: color 0.2s ease; }
+
+/* Books Page Specific Styles */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .books-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.book-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.book-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2);
 }
-
-.hovered-element {
-    filter: drop-shadow(0 0 8px #1C80A4);
+.book-image-fallback {
+    background: #f3f4f6;
+    border: 2px dashed #d1d5db;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 256px;
+    width: 100%;
+    color: #6b7280;
 }
-
-::selection {
+.get-book-btn {
     background: #1C80A4;
     color: white;
+    padding: 1.5rem 4rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    margin-top: 2rem;
+    border: 3px solid #1C80A4;
+    box-shadow: 0 12px 24px rgba(28, 128, 164, 0.4);
+    min-width: 300px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.get-book-btn:hover {
+    background: #1890B4;
+    border-color: #1890B4;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(28, 128, 164, 0.5);
+    color: white;
+}
+.book-image {
+    height: 100%;
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    object-position: center;
+}
+.books-section-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
 }
