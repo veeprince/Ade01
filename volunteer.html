@@ -5,8 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer | Odedina Adeniyi</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1C80A4',
+                        'primary-dark': '#1890B4'
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -50,11 +62,13 @@
 
                 <div class="mt-8 p-6 bg-gray-50 rounded-lg">
                     <h4 class="text-lg font-semibold mb-4">Want to Get Involved?</h4>
-                    <p class="text-gray-600 mb-6">Join our mission to improve healthcare accessibility in underserved
-                        areas. We welcome volunteers with various skills and backgrounds.</p>
-                    <a href="#"
-                        class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block">Join
-                        as Volunteer</a>
+                    <p class="text-gray-600 mb-6">Join our mission to improve healthcare accessibility in underserved areas. We welcome volunteers with various skills and backgrounds.</p>
+                    <a href="mailto:info@odedinaadeniyi.com?subject=Volunteer Interest&body=I would like to volunteer with your healthcare initiatives and learn more about available opportunities."
+                       class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Get Involved
+                    </a>
                 </div>
             </div>
         </div>
@@ -66,16 +80,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize AOS
-            AOS.init({
-                duration: 600,
-                easing: 'ease-out-quad',
-                once: true
-            });
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 600,
+                    easing: 'ease-out-quad',
+                    once: true
+                });
+            }
 
             // Feather icons
-            feather.replace();
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
         });
     </script>
 </body>
 
 </html>
+
+<!--
+    Volunteer Page - Engagement
+    Key features:
+    - Volunteer opportunities
+    - Community involvement
+-->

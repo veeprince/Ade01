@@ -1,5 +1,4 @@
-<div class="font-sans antialiased text-gray-800">
-    <!-- Navigation -->
+<!-- Navigation -->
     <nav class="fixed w-full bg-white shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
@@ -18,6 +17,8 @@
                             id="awards-link">Awards</a>
                         <a href="books.html" class="text-gray-600 hover:text-teal-600 transition"
                             id="books-link">Books</a>
+                        <a href="blog.html" class="text-gray-600 hover:text-teal-600 transition"
+                            id="blog-link">Blog</a>
                         <a href="events.html" class="text-gray-600 hover:text-teal-600 transition"
                             id="events-link">Events</a>
                         <a href="outreach.html" class="text-gray-600 hover:text-teal-600 transition"
@@ -36,12 +37,14 @@
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
                         aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <i data-feather="menu"></i>
+                        <!-- Use Unicode hamburger instead of Feather icon -->
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
             <div class="px-4 pt-2 pb-4 space-y-2">
                 <a href="about.html" class="block text-gray-600 hover:text-teal-600 transition"
@@ -50,6 +53,8 @@
                     id="awards-link-mobile">Awards</a>
                 <a href="books.html" class="block text-gray-600 hover:text-teal-600 transition"
                     id="books-link-mobile">Books</a>
+                <a href="blog.html" class="block text-gray-600 hover:text-teal-600 transition"
+                    id="blog-link-mobile">Blog</a>
                 <a href="events.html" class="block text-gray-600 hover:text-teal-600 transition"
                     id="events-link-mobile">Events</a>
                 <a href="outreach.html" class="block text-gray-600 hover:text-teal-600 transition"
@@ -64,39 +69,21 @@
             </div>
         </div>
     </nav>
-</div>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Hamburger menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Set active navigation link
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        const pageName = currentPage.replace('.html', '');
-
-        // Update desktop menu
-        const activeLink = document.getElementById(pageName + '-link');
-        if (activeLink) {
-            activeLink.classList.remove('text-gray-600');
-            activeLink.classList.add('text-teal-600', 'font-medium');
-        }
-
-        // Update mobile menu
-        const activeMobileLink = document.getElementById(pageName + '-link-mobile');
-        if (activeMobileLink) {
-            activeMobileLink.classList.remove('text-gray-600');
-            activeMobileLink.classList.add('text-teal-600', 'font-medium');
-        }
-
-        // Feather icons
-        if (window.feather) {
-            feather.replace();
-        }
+    // Fix any mailto forms and links in the header after it loads
+    document.querySelectorAll('form[action^="mailto:"]').forEach(form => {
+        const email = form.getAttribute('action').replace('mailto:', '');
+        const contactLink = document.createElement('a');
+        contactLink.href = `mailto:${email}`;
+        contactLink.target = '_blank';
+        contactLink.rel = 'noopener noreferrer';
+        contactLink.className = 'bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition';
+        contactLink.textContent = 'Contact';
+        form.parentNode.replaceChild(contactLink, form);
+    });
+    
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
     });
 </script>

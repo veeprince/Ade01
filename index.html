@@ -5,8 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odedina Adeniyi | Holistic Healthcare Practitioner</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1C80A4',
+                        'primary-dark': '#1890B4'
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -15,10 +27,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="font-sans antialiased text-gray-800">
+<body class="font-sans antialiased text-gray-800 flex flex-col min-h-screen">
     <div data-include="header.html"></div>
 
-    <main class="hero-gradient flex-1">
+    <main class="hero-gradient flex-1 pt-20">
         <!-- Hero Section -->
         <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,14 +60,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize AOS
-            AOS.init({
-                duration: 600,
-                easing: 'ease-out-quad',
-                once: true
-            });
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 600,
+                    easing: 'ease-out-quad',
+                    once: true
+                });
+            }
 
             // Feather icons
-            feather.replace();
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
 
             // Preload hover images
             document.querySelectorAll('img').forEach(img => {

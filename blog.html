@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Odedina Adeniyi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(28,128,164,0.9) 0%, rgba(24,144,180,0.9) 100%);
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(28, 128, 164, 0.2), 0 10px 10px -5px rgba(28, 128, 164, 0.1);
+        }
+        .hovered-element {
+            filter: drop-shadow(0 0 8px #1C80A4);
+        }
+        ::selection {
+            background: #1C80A4;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/2.png" class="h-8 w-8 rounded-full">
+                    <span class="ml-2 text-xl font-bold text-gray-800">Odedina Adeniyi</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="index.html#about" class="text-gray-600 hover:text-[#1C80A4] transition">About</a>
+                        <a href="index.html#awards" class="text-gray-600 hover:text-[#1C80A4] transition">Awards</a>
+                        <a href="index.html#books" class="text-gray-600 hover:text-[#1C80A4] transition">Books</a>
+                        <a href="index.html#events" class="text-gray-600 hover:text-[#1C80A4] transition">Events</a>
+                        <a href="index.html#outreach" class="text-gray-600 hover:text-[#1C80A4] transition">Outreach</a>
+                        <a href="index.html#volunteer" class="text-gray-600 hover:text-[#1C80A4] transition">Volunteer</a>
+                        <a href="blog.html" class="text-[#1C80A4] font-medium hover:text-[#1890B4] transition">Blog</a>
+                        <a href="index.html#consultation" class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition">Consult</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Weekly Blog</h1>
+                <p class="text-xl mb-8 opacity-90">Insights on nursing, Leadership and Personal development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Latest Posts</h2>
+                <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
+            </div>
+            
+            <div class="flex justify-center">
+                <!-- Blog Post 1 -->
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 max-w-md w-full" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=640&h=360&fit=crop" alt="Healthcare Professionals - Stress Management" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>June 15, 2026</span>
+                            <span class="mx-2">•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Stress management to boost productivity for Healthcare practitioners.</h3>
+                        <p class="text-gray-600 mb-4">Exploring effective stress management techniques to enhance productivity and well-being for healthcare professionals...</p>
+                        <a href="#" class="text-[#1C80A4] font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-[#1C80A4] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1890B4] transition">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Subscribe to Weekly Updates</h2>
+                <p class="text-gray-600 mb-6">Get the latest blog posts and insights delivered to your inbox every week.</p>
+                <form class="flex max-w-md mx-auto">
+                    <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-md text-gray-800 w-full focus:outline-none">
+                    <button type="submit" class="bg-[#1C80A4] text-white px-6 py-3 rounded-r-md hover:bg-[#1890B4] transition">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-heartbeat text-[#1C80A4] text-2xl"></i>
+                        <span class="ml-2 text-xl font-bold">Odedina Adeniyi</span>
+                    </div>
+                    <p class="text-gray-400">UKRN - ICU /Leadership/ Education</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.facebook.com/odedina.adeniyi" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition text-xl" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://x.com/AdeniyiOdedina" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition inline-flex items-center" aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/odedina.adeniyi/?igshid=YmMyMTA2M2Y%3D" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition text-xl" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/odedina-adeniyi-419934190/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition text-xl" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="grid grid-cols-2 gap-x-4 gap-y-2">
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-[#1C80A4] transition">About</a></li>
+                        <li><a href="index.html#awards" class="text-gray-400 hover:text-[#1C80A4] transition">Awards</a></li>
+                        <li><a href="index.html#books" class="text-gray-400 hover:text-[#1C80A4] transition">Books</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-[#1C80A4] transition">Blog</a></li>
+                        <li><a href="index.html#events" class="text-gray-400 hover:text-[#1C80A4] transition">Events</a></li>
+                        <li><a href="index.html#outreach" class="text-gray-400 hover:text-[#1C80A4] transition">Outreach</a></li>
+                        <li><a href="index.html#volunteer" class="text-gray-400 hover:text-[#1C80A4] transition">Volunteer</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-[#1C80A4] transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Recent Posts</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-[#1C80A4] transition">Stress management to boost productivity for Healthcare practitioners.</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>info@odedinaadeniyi.com</p>
+                        <p>+447761254152</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Odedina Adeniyi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS with smooth settings
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out-quad',
+                once: true
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Feather icons
+            feather.replace();
+
+            // Preload hover images
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.dataset.hoverSrc) {
+                    const hoverImage = new Image();
+                    hoverImage.src = img.dataset.hoverSrc;
+                }
+            });
+        });
+
+        // Smooth page transitions
+        document.querySelectorAll('a').forEach(link => {
+            if (link.href.includes(window.location.hostname) && 
+                !link.href.includes('#') && 
+                link.href !== window.location.href) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = link.href;
+                    }, 300);
+                });
+            }
+        });
+    </script>
+    <style>
+        body {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        body.fade-out {
+            opacity: 0;
+        }
+        [data-aos] {
+            transition-property: transform, opacity;
+        }
+        .service-card, .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        a {
+            transition: color 0.2s ease;
+        }
+        button, .btn {
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        button:hover, .btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</body>
+</html>

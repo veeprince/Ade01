@@ -5,8 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books | Odedina Adeniyi</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Replace CDN with production-ready Tailwind -->
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1C80A4',
+                        'primary-dark': '#1890B4'
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -27,23 +40,39 @@
                     <div class="w-20 h-1 bg-[#1C80A4] mx-auto"></div>
                     <p class="text-[#1C80A4] mt-4 max-w-2xl mx-auto font-medium">Productivity hub</p>
                 </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex justify-center mb-4">
-                            <img src="https://huggingface.co/spaces/Innovateur/odedina/resolve/main/images/1.png"
-                                alt="Book" class="h-64 w-auto">
-                        </div>
-                        <div class="text-center">
+                <div class="books-grid">
+                    <!-- Book Description Tab -->
+                    <div class="book-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-center w-full">
                             <h3 class="text-xl font-semibold mb-3">Clarity and Productivity Workbook</h3>
-                            <p class="text-gray-600 mb-6">A practical guide to achieving clarity and maximizing
-                                productivity
-                                in your personal and professional life.</p>
-                            <a href="#"
-                                class="bg-[#1C80A4] text-white px-6 py-2 rounded-md hover:bg-[#1890B4] transition inline-block">Learn
-                                More</a>
+                            <p class="text-gray-600 mb-6">Whether you're a seasoned leader or just starting out, this workbook is designed to help you enhance the quality of your work and personal life. With a range of practical tools and exercises, you'll be able to identify what you want, what's challenging, and how to make decisions from a place of purpose, not fear.</p>
+                            <p class="text-gray-600 mb-6">So, if you're ready to gain clarity, focus, and productivity, and take your leadership skills to the next level, then this workbook is for you. Get your copy today and start transforming your life!</p>
                         </div>
                     </div>
+
+                    <!-- Book Image Tab -->
+                    <div class="book-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex justify-center w-full">
+                            <img src="./clarity.jpeg"
+                                alt="Clarity and Productivity Workbook"
+                                class="book-image"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="book-image-fallback" style="display:none;">
+                                <div class="text-center">
+                                    <p class="text-lg font-medium">Book Cover</p>
+                                    <p class="text-sm">Image not available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Get Book Button Section -->
+                <div class="books-section-bottom" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://amzn.eu/d/cut06hG"
+                        class="get-book-btn"
+                        target="_blank" rel="noopener">Get Book</a>
                 </div>
             </div>
         </section>
@@ -55,16 +84,34 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize AOS
-            AOS.init({
-                duration: 600,
-                easing: 'ease-out-quad',
-                once: true
-            });
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 600,
+                    easing: 'ease-out-quad',
+                    once: true
+                });
+            }
 
             // Feather icons
-            feather.replace();
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+
+            // Ensure all links and buttons are clickable
+            document.querySelectorAll('a, button').forEach(element => {
+                element.style.pointerEvents = 'auto';
+                element.style.cursor = 'pointer';
+                element.style.userSelect = 'none';
+            });
         });
     </script>
 </body>
 
 </html>
+
+<!--
+    Books Page - Products
+    Key features:
+    - Published works showcase
+    - Purchase/Learn more options
+-->

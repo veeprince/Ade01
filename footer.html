@@ -1,60 +1,103 @@
+<!--
+    Footer Component - Main Documentation
+    Key features:
+    - Brand and social media integration
+    - User engagement tools (Quick links & Newsletter)
+    Last updated: 2024
+-->
+
 <footer class="bg-gray-800 text-white py-6 md:py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-            <!-- Brand and Social Section -->
+            <!-- Brand Section 
+                 Features:
+                 - Professional branding elements
+                 - Social media connectivity
+            -->
             <div class="text-center md:text-left">
                 <div class="flex items-center justify-center md:justify-start mb-2">
-                    <i data-feather="heart" class="text-teal-500 h-6 w-6 md:h-8 md:w-8"></i>
+                    <a href="2.png" target="_blank">
+                        <img src="2.png" alt="Odedina Adeniyi Logo" class="h-6 w-6 md:h-8 md:w-8" loading="lazy">
+                    </a>
                     <span class="ml-2 text-lg md:text-xl font-bold">Odedina Adeniyi</span>
                 </div>
                 <p class="text-gray-400 text-sm mb-4">UKRN - ICU /Leadership/ Education</p>
                 <div class="flex justify-center md:justify-start space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-[#1C80A4] transition">
-                        <i data-feather="facebook" class="h-5 w-5"></i>
+                    <a href="https://www.facebook.com/odedina.adeniyi" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition text-xl"
+                        aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-[#1C80A4] transition">
-                        <i data-feather="twitter" class="h-5 w-5"></i>
+                    <a href="https://x.com/AdeniyiOdedina" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition inline-flex items-center" aria-label="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-[#1C80A4] transition">
-                        <i data-feather="instagram" class="h-5 w-5"></i>
+                    <a href="https://www.instagram.com/odedina.adeniyi/?igshid=YmMyMTA2M2Y%3D" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition text-xl"
+                        aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-[#1C80A4] transition">
-                        <i data-feather="linkedin" class="h-5 w-5"></i>
+                    <a href="https://www.linkedin.com/in/odedina-adeniyi-419934190/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1C80A4] transition text-xl"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Quick Links Section -->
+            <!-- Navigation -->
             <div class="text-center md:text-left mt-4 md:mt-0">
                 <h4 class="text-base md:text-lg font-semibold mb-2">Quick Links</h4>
                 <div class="grid grid-cols-3 gap-1 text-sm">
                     <a href="about.html" class="text-gray-400 hover:text-[#1C80A4] transition">About</a>
-                    <a href="awards.html" class="text-gray-400 hover:text-[#1C80A4] transition">Awards</a>
+                    <a href="books.html" class="text-gray-400 hover:text-[#1C80A4] transition">Books</a>
+                    <a href="blog.html" class="text-gray-400 hover:text-[#1C80A4] transition">Blog</a>
+                    <a href="consultation.html" class="text-gray-400 hover:text-[#1C80A4] transition">Consultation</a>
                     <a href="events.html" class="text-gray-400 hover:text-[#1C80A4] transition">Events</a>
                     <a href="outreach.html" class="text-gray-400 hover:text-[#1C80A4] transition">Outreach</a>
                     <a href="volunteer.html" class="text-gray-400 hover:text-[#1C80A4] transition">Volunteer</a>
+                    <a href="awards.html" class="text-gray-400 hover:text-[#1C80A4] transition">Awards</a>
                     <a href="contact.html" class="text-gray-400 hover:text-[#1C80A4] transition">Contact</a>
                 </div>
             </div>
 
-            <!-- Newsletter Section -->
+            <!-- Newsletter Section - FIXED: Removed mailto form -->
             <div class="mt-4 md:mt-0">
                 <h4 class="text-base md:text-lg font-semibold mb-2 text-center md:text-left">Newsletter</h4>
                 <p class="text-gray-400 text-sm mb-2 text-center md:text-left">Get weekly updates</p>
-                <form class="flex max-w-xs mx-auto md:mx-0">
-                    <input type="email" placeholder="Your email"
-                        class="px-3 py-1 rounded-l-md text-gray-800 w-full focus:outline-none text-sm">
-                    <button type="submit"
-                        class="bg-[#1C80A4] text-white px-3 py-1 rounded-r-md hover:bg-[#1890B4] transition">
-                        <i data-feather="send" class="w-4 h-4"></i>
-                    </button>
-                </form>
+                <!-- Replace form with direct email link -->
+                <div class="text-center md:text-left">
+                    <a href="mailto:info@odedinaadeniyi.com?subject=Newsletter Subscription&body=Hey there, I would like to join your newsletter. Many thanks."
+                       class="bg-[#1C80A4] text-white px-4 py-2 rounded-md hover:bg-[#1890B4] transition inline-block text-sm"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Subscribe to Newsletter
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- Copyright Section -->
-        <div class="border-t border-gray-700 mt-4 md:mt-6 pt-4 text-center text-gray-400 text-xs md:text-sm">
-            <p>&copy; 2025 Odedina Adeniyi. All rights reserved.</p>
+        <!-- Copyright Section
+             Features:
+             - Legal protection
+             - Professional presentation
+        -->
+        <div class="border-t border-gray-700 mt-4 md:mt-6 pt-4">
+            <p class="text-center text-gray-400 text-xs md:text-sm">&copy; 2025 Odedina Adeniyi. All rights reserved.</p>
         </div>
     </div>
 </footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/feather-icons" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+        
+        // Fix any remaining mailto links
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+    });
+</script>
