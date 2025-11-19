@@ -8,7 +8,7 @@ class NoCacheHTTPRequestHandler(SimpleHTTPRequestHandler):
         SimpleHTTPRequestHandler.end_headers(self)
 
 if __name__ == '__main__':
-    server_address = ('', 8000)
+    server_address = ('', 8002)
     httpd = HTTPServer(server_address, NoCacheHTTPRequestHandler)
-    print('Server running on port 8000...')
+    print('Server running on port 8002...')
     httpd.serve_forever()
